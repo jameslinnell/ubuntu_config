@@ -40,6 +40,7 @@ function install_zsh() {
   sudo chsh -s /usr/bin/zsh
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="strug"/g' $HOME/.zshrc
+  echo "ZSH now installed please rerun to carry on"
 }
 
 function install_asdf() {
@@ -55,10 +56,13 @@ function ubuntu_update() {
 function ubuntu_base_packages() {
   echo "Installing base packages..."
   sudo apt install zsh make awscli curl file wget build-essential ubuntu-restricted-extras btop tldr atuin eza bat fzf neofetch vim neovim dconf-editor kitty alacritty python3-dev python3-pip python3-setuptools -y
-  install_lazygit
   install_zsh
+}
+
+function ubuntu_post_zsh() {
   install_asdf
   sed -i 's/plugins=(git)/plugins=(git asdf)/g' >> $HOME/.zshrc
+  install_lazygit
   add_aliases
 }
 
@@ -97,5 +101,6 @@ function prompt_user() {
 # Main script execution with prompts
 prompt_user "Would you like to update the system?" ubuntu_update
 prompt_user "Would you like to install base packages?" ubuntu_base_packages
+prompt_user "Carry on installing base packages?" ubuntu_post_zsh
 prompt_user "Would you like to set up i3?" i3setup
 prompt_user "Would you like to install optional packages (e.g., NordVPN)?" ubuntu_optional
