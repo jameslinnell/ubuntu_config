@@ -8,7 +8,7 @@ function ubuntu_update() {
 
 function ubuntu_base_packages() {
   echo "Installing base packages..."
-  sudo apt install make awscli curl poetry wget pyenv build-essential ubuntu-restricted-extras btop tldr atuin exa bat fzf neofetch vim neovim pip dconf-editor glow kitty alacritty python3-dev python3-pip python3-setuptools distutils -y
+  sudo apt install make awscli curl poetry wget pyenv build-essential ubuntu-restricted-extras btop tldr atuin eza bat fzf neofetch vim neovim pip dconf-editor kitty alacritty python3-dev python3-pip python3-setuptools distutils -y
 }
 
 function i3setup() {
