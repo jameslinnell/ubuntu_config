@@ -46,12 +46,16 @@ function install_starship() {
 
 function install_config() {
   current_dir=$(pwd)
-  cp -rf $current_dir/config/tmux ~/.config/
   cp -rf $current_dir/config/rofi ~/.config/
   cp -rf $current_dir/config/dunst ~/.config/
   cp -rf $current_dir/config/atuin ~/.config/
   cp -rf $current_dir/config/starship.toml ~/.config/
   cp -rf $current_dir/config/picom.conf ~/.config/
+}
+
+function wallpapers() {
+  current_dir=$(pwd)
+  cp -rf $current_dir/wallpapers ~/Pictures/
 }
 
 function ubuntu_config() {
@@ -104,4 +108,5 @@ function prompt_user() {
 prompt_user "Would you like to configure the system?" ubuntu_config
 prompt_user "Would you like to set up i3?" i3setup
 prompt_user "Would you like to install extra config?" install_config
+prompt_user "Would you like to install wallpapers?" wallpapers
 prompt_user "Would you like to install optional packages (e.g., NordVPN)?" ubuntu_optional
