@@ -9,10 +9,6 @@ function install_lazygit() {
 
 function add_to_rc_files() {
   local lines=("$@")
-  # local lines=("export MY_VAR1='value1'"
-  #              "export MY_VAR2='value2'"
-  #              "alias ll='ls -la'")
-
   local files=("$HOME/.zshrc" "$HOME/.bashrc")
 
   for file in "${files[@]}"; do
@@ -46,6 +42,16 @@ function install_starship() {
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Cousine.zip
   unzip Cousine.zip -d ~/.local/share/fonts
   fc-cache -fv
+}
+
+function install_config() {
+  current_dir=$(pwd)
+  cp -rf $current_dir/config/tmux ~/.config/
+  cp -rf $current_dir/config/rofi ~/.config/
+  cp -rf $current_dir/config/dunst ~/.config/
+  cp -rf $current_dir/config/atuin ~/.config/
+  cp -rf $current_dir/config/starship.toml ~/.config/
+  cp -rf $current_dir/config/picom.conf ~/.config/
 }
 
 function ubuntu_config() {
@@ -97,4 +103,5 @@ function prompt_user() {
 # Main script execution with prompts
 prompt_user "Would you like to configure the system?" ubuntu_config
 prompt_user "Would you like to set up i3?" i3setup
+prompt_user "Would you like to install extra config?" install_config
 prompt_user "Would you like to install optional packages (e.g., NordVPN)?" ubuntu_optional
