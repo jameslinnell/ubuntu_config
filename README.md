@@ -28,3 +28,17 @@ sudo apt install git -y
 ```
 Type your password when prompted.
 
+ - Now clone the repository to your home directory
+
+```
+git clone https://github.com/jameslinnell/ubuntu_config.git
+```
+
+### Build
+
+ - Build the system and follow the prompts
+
+```
+sh init.sh
+```
+
