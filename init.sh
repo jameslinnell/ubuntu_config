@@ -39,6 +39,7 @@ function add_aliases() {
 function install_zsh() {
   sudo chsh -s /usr/bin/zsh
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="strug"/g' $HOME/.zshrc
 }
 
 function install_asdf() {
@@ -57,7 +58,7 @@ function ubuntu_base_packages() {
   install_lazygit
   install_zsh
   install_asdf
-  echo "plugins=(git asdf)" >> "$HOME/.zshrc"
+  sed -i 's/plugins=(git)/plugins=(git asdf)/g' >> $HOME/.zshrc
   add_aliases
 }
 
