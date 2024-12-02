@@ -1,12 +1,7 @@
 #!/bin/bash
 
-UPDATE=false
-BASE_PACKAGES=false
-I3=false
-OPTIONAL=false
-
 function ubuntu_update() {
-  echo "Running ubuntu_update..."
+  echo "Updating system..."
   sudo apt update -y
   sudo apt upgrade -y
 }
@@ -23,45 +18,33 @@ function i3setup() {
 
 function ubuntu_optional() {
   echo "Installing optional packages..."
-  sudo apt install nordvpn
+  sudo apt install nordvpn -y
 }
 
-# Parse command-line arguments
-while [[ $# -gt 0 ]]; do
-  case $1 in
-    --update)
-      UPDATE=true
-      ;;
-    --base-packages)
-      BASE_PACKAGES=true
-      ;;
-    --i3)
-      I3=true
-      ;;
-    --optional)
-      OPTIONAL=true
-      ;;
-    *)
-      echo "Unknown option: $1"
-      exit 1
-      ;;
-  esac
-  shift
-done
+function prompt_user() {
+  local prompt_message="$1"
+  local function_to_run="$2"
+  
+  while true; do
+    read -p "$prompt_message (Y/n): " user_input
+    case $user_input in
+      [Yy]*|"") # Default to 'yes' if the user presses enter without typing anything
+        $function_to_run
+        break
+        ;;
+      [Nn]*)
+        echo "Skipping $function_to_run."
+        break
+        ;;
+      *)
+        echo "Please answer Y or n."
+        ;;
+    esac
+  done
+}
 
-# Run the functions based on the options
-if $UPDATE; then
-  ubuntu_update
-fi
-
-if $BASE_PACKAGES; then
-  ubuntu_base_packages
-fi
-
-if $I3; then
-  i3setup
-fi
-
-if $OPTIONAL; then
-  ubuntu_optional
-fi
+# Main script execution with prompts
+prompt_user "Would you like to update the system?" ubuntu_update
+prompt_user "Would you like to install base packages?" ubuntu_base_packages
+prompt_user "Would you like to set up i3?" i3setup
+prompt_user "Would you like to install optional packages (e.g., NordVPN)?" ubuntu_optional
