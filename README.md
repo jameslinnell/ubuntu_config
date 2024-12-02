@@ -19,7 +19,7 @@ Once you have installed `Ubuntu 24.10` and rebooted back into the OS you will ne
 
  - Open the `terminal` app.
 
-    - To do this either click on the icon in the bottom left of the screen and find the terminal app of press the `<leader>` key.
+    - To do this either click on the icon in the bottom left of the screen and find the terminal app or press the `<leader>` key.
 
  - In the terminal type the following command.
 

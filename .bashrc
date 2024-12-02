@@ -122,16 +122,9 @@ fi
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
 . "$HOME/.cargo/env"
-alias vim=nvim
-eval $(thefuck --alias)
+# alias vim=nvim
+# eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
+# eval $(thefuck --alias FUCK)
 
-# CPM
-alias cpm-full="sh ~/Scripts/run-cpm.sh"
-alias cpm-start="sh ~/Scripts/run-cpm.sh --build"
-alias cpm-test="sh ~/Scripts/run-cpm.sh --test"
-alias cpm-end="sh ~/Scripts/run-cpm.sh --destroy"
-alias cpm-start-test="sh ~/Scripts/run-cpm.sh --build --test"
-alias cpm-test-end="sh ~/Scripts/run-cpm.sh --test --destroy"
 
