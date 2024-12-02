@@ -39,6 +39,6 @@ git clone https://github.com/jameslinnell/ubuntu_config.git
  - Build the system and follow the prompts
 
 ```
-sh init.sh
+./init.sh
 ```
 
