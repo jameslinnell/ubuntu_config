@@ -21,11 +21,11 @@ function add_to_rc_files() {
 }
 
 function add_aliases() {
-  add_to_rc_files = "alias lg=lazygit" "alias vim=nvim" "alias nvf='nvim \$(fzf)'" "alias cat=batcat" "alias bfz='batcat \$(fzf)'" "alias lsls='exa -h -a -1 -l -r --sort name --tree -L 1 --group-directories-first --total-size --time-style iso --git --icons=auto'" "alias ls='exa -h -a -1 -l -r --sort name --tree -L 1 --group-directories-first --total-size --time-style iso --git --no-permissions --no-user --no-time --icons=auto'" "alias cdf='cd \$(find . -type d | fzf)'"
+  add_to_rc_files "alias lg=lazygit" "alias vim=nvim" "alias nvf='nvim \$(fzf)'" "alias cat=batcat" "alias bfz='batcat \$(fzf)'" "alias lsls='exa -h -a -1 -l -r --sort name --tree -L 1 --group-directories-first --total-size --time-style iso --git --icons=auto'" "alias ls='exa -h -a -1 -l -r --sort name --tree -L 1 --group-directories-first --total-size --time-style iso --git --no-permissions --no-user --no-time --icons=auto'" "alias cdf='cd \$(find . -type d | fzf)'"
 }
 
 function add_defaults() {
-	add_to_rc_files " " ". '$HOME/.atuin/bin/env'" "export EDITOR=nvim" "export VISUAL=nvim" " " "export PATH=~/.local/bin:$PATH"
+	add_to_rc_files " " ". '~/.atuin/bin/env'" "export EDITOR=nvim" "export VISUAL=nvim" " " "export PATH=~/.local/bin:$PATH"
 	echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
 }
 
@@ -37,7 +37,7 @@ function install_starship() {
   curl -sS https://starship.rs/install.sh | sh
   echo 'eval "$(starship init zsh)"' >> ~/.zshrc
   current_dir=$(pwd)
-  cp $current_dir/config/kitty/* ~/.config/kitty/
+  cp -rf $current_dir/config/kitty ~/.config/
   sudo apt install stow -y
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Cousine.zip
   unzip Cousine.zip -d ~/.local/share/fonts
