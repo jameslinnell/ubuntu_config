@@ -1,5 +1,11 @@
 #!/bin/bash
 
+function install_config() {
+  current_dir=$(pwd)
+  cp -rf $current_dir/config/rofi ~/.config/
+  cp -rf $current_dir/config/dunst ~/.config/
+}
+
 function i3setup() {
   echo "Setting up i3..."
   sudo apt install i3 polybar feh rofi wireplumber dunst picom -y
@@ -7,6 +13,7 @@ function i3setup() {
   mkdir ~/.config/i3
   cp -rf $current_dir/config/i3/* ~/.config/i3/
   cp -rf $current_dir/config/polybar ~/.config/
+  install_config
   echo "i3 window manger is now installed. Log out, and on the login screen set i3 to be the window manager before logging back in." 
 }
 
@@ -33,4 +40,4 @@ function prompt_user() {
 }
 
 # Main script execution with prompts
-prompt_user "Would you like to set up i3?" i3setup
+prompt_user "Would you like to set up i3 window manager?" i3setup

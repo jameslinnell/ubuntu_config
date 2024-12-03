@@ -2,7 +2,7 @@
 
 function xfce4setup() {
   echo "Setting up xfce4..."
-  sudo apt install xfce4 -y
+  sudo apt install xfce4 picom -y
   # current_dir=$(pwd)
   # mkdir ~/.config/i3
   # cp -rf $current_dir/config/i3/* ~/.config/i3/
@@ -33,4 +33,4 @@ function prompt_user() {
 }
 
 # Main script execution with prompts
-prompt_user "Would you like to set up i3?" xfce4setup
+prompt_user "Would you like to set up xfce4 window manager?" xfce4setup
