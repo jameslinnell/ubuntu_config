@@ -15,7 +15,7 @@ function ubuntu_update() {
 
 function ubuntu_base_packages() {
   echo "Installing base packages..."
-  sudo apt install zsh fd-find make awscli curl file wget build-essential ubuntu-restricted-extras ranger btop tldr atuin eza bat fzf neofetch vim neovim dconf-editor kitty alacritty python3-dev python3-pip python3-setuptools -y
+  sudo apt install zsh fd-find make tmux awscli curl file wget build-essential ubuntu-restricted-extras ranger tree btop tldr atuin eza bat fzf neofetch vim neovim dconf-editor kitty alacritty python3-dev python3-pip python3-setuptools -y
   install_zsh
 }
 

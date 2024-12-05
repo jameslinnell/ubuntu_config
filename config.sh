@@ -76,9 +76,18 @@ function ubuntu_config() {
   cp .tmux.conf ~/
 }
 
+function install_nordvpn() {
+  echo "Installing nordvpn..."
+  sudo snap install nordvpn
+  sudo groupadd nordvpn
+  sudo usermod -aG nordvpn $USER
+}
+
 function ubuntu_optional() {
   echo "Installing optional packages..."
-  sudo apt install nordvpn -y
+  current_dir=$(pwd)
+  cp -rf $current_dir/Scripts ~/
+  install_nordvpn
 }
 
 function prompt_user() {
