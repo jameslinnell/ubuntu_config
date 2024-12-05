@@ -10,6 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+# Uncomment below for virtual machine
+# exec --no-startup-id xrandr --output Virtual1 --mode 2048x1152
 exec --no-startup-id killall -q polybar
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
