@@ -14,7 +14,7 @@ function add_to_rc_files() {
   for file in "${files[@]}"; do
     echo "Adding lines to $file..."
     for line in "${lines[@]}"; do
-      echo "$line" >> "$file"
+      echo "$line" >>"$file"
     done
     echo "Lines added to $file"
   done
@@ -25,8 +25,8 @@ function add_aliases() {
 }
 
 function add_defaults() {
-	add_to_rc_files " " ". '~/.atuin/bin/env'" "export EDITOR=nvim" "export VISUAL=nvim" " " "export PATH=~/.local/bin:$PATH"
-	echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+  add_to_rc_files " " ". '~/.atuin/bin/env'" "export EDITOR=nvim" "export VISUAL=nvim" " " "export PATH=~/.local/bin:$PATH"
+  echo 'eval "$(atuin init zsh)"' >>~/.zshrc
 }
 
 function install_asdf() {
@@ -35,7 +35,7 @@ function install_asdf() {
 
 function install_starship() {
   curl -sS https://starship.rs/install.sh | sh
-  echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+  echo 'eval "$(starship init zsh)"' >>~/.zshrc
   current_dir=$(pwd)
   cp -rf $current_dir/config/kitty ~/.config/
   sudo apt install stow -y
@@ -51,6 +51,12 @@ function install_config() {
   cp -rf $current_dir/config/picom.conf ~/.config/
 }
 
+function configure_lazyvim() {
+  current_dir=$(pwd)
+  rm -rf ~/.config/nvim
+  cp -rf $current_dir/config/nvim ~/.config/
+}
+
 function wallpapers() {
   current_dir=$(pwd)
   cp -rf $current_dir/wallpapers ~/Pictures/
@@ -64,6 +70,7 @@ function ubuntu_config() {
   add_defaults
   install_starship
   install_config
+  configure_lazyvim
 }
 
 function ubuntu_optional() {
@@ -74,21 +81,21 @@ function ubuntu_optional() {
 function prompt_user() {
   local prompt_message="$1"
   local function_to_run="$2"
-  
+
   while true; do
     read -p "$prompt_message (Y/n): " user_input
     case $user_input in
-      [Yy]*|"") # Default to 'yes' if the user presses enter without typing anything
-        $function_to_run
-        break
-        ;;
-      [Nn]*)
-        echo "Skipping $function_to_run."
-        break
-        ;;
-      *)
-        echo "Please answer Y or n."
-        ;;
+    [Yy]* | "") # Default to 'yes' if the user presses enter without typing anything
+      $function_to_run
+      break
+      ;;
+    [Nn]*)
+      echo "Skipping $function_to_run."
+      break
+      ;;
+    *)
+      echo "Please answer Y or n."
+      ;;
     esac
   done
 }
