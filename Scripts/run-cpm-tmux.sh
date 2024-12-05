@@ -17,7 +17,7 @@ tmux new-session -d -s connecting-party-manager
 tmux select-pane -t connecting-party-manager.0
 # tmux send-keys -t connecting-party-manager "sh ~/Scripts/run-cpm.sh --build" C-m
 tmux send-keys -t connecting-party-manager "cd ~/Development/NHS/CPM/connecting-party-manager/" C-m
-tmus send-keys -t connecting-party-manager "clear"
+tmux send-keys -t connecting-party-manager "clear"
 
 # Attach to the session
 tmux attach-session -t connecting-party-manager

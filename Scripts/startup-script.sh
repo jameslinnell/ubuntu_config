@@ -22,12 +22,9 @@
 #"
 
 # Check if cron service is running; if not, start it
-if ! pgrep cron > /dev/null; then
-    echo "Starting cron service..."
-    sudo systemctl start cron
+if ! pgrep cron >/dev/null; then
+  echo "Starting cron service..."
+  sudo systemctl start cron
 fi
 
 echo "Cron service is running."
-
-
-

@@ -226,7 +226,7 @@ bindsym $mod+Shift+Return exec code
 # Open the first terminal and start VPN connection, check status, and launch Neovim
 # exec --no-startup-id gnome-terminal --window --maximize -- zsh -c "nordvpn connect uk; nordvpn status; cd ~/Development/NHS/CPM/connecting-party-manager; nvim; exec zsh"
 # exec --no-startup-id gnome-terminal --window --maximize -- zsh -c "nordvpn connect uk; nordvpn status; cd ~/Development/NHS/CPM/connecting-party-manager/; cpm-start; exec zsh"
-exec --no-startup-id kitty zsh -c "source ~/.zshrc; nordvpn connect uk; nordvpn status; cd ~/Development/NHS/CPM/connecting-party-manager/; sh ~/Scripts/run-cpm-tmux.sh; exec zsh"
+exec --no-startup-id alacritty zsh -c "source ~/.zshrc; nordvpn connect uk; nordvpn status; cd ~/Development/NHS/CPM/connecting-party-manager/; sh ~/Scripts/run-cpm-tmux.sh; exec zsh"
 
 # Split the container vertically (to place the next window below the first one)
 # exec --no-startup-id i3-msg 'split v'
