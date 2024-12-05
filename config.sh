@@ -63,6 +63,7 @@ function wallpapers() {
 }
 
 function ubuntu_config() {
+  current_dir=$(pwd)
   install_lazygit
   install_asdf
   sed -i 's/plugins=(git)/plugins=(git asdf)/g' ~/.zshrc
@@ -71,6 +72,8 @@ function ubuntu_config() {
   install_starship
   install_config
   configure_lazyvim
+  rm ~/.tmux.conf
+  cp .tmux.conf ~/
 }
 
 function ubuntu_optional() {
